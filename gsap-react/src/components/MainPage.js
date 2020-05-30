@@ -16,43 +16,34 @@ const MainPage = () => {
     const burgerLine3rdRef = useRef(null);
     const navRef = useRef(null);
     const closeNavRef = useRef(null);
+    const sloganRef = useRef(null);
+    const learnMoreButtonRef = useRef(null);
+    const fourColItemRefs = useRef([]);
 
     useEffect(() => {
-        console.log(navRef.current.children[0].children);
+        fourColItemRefs.current.forEach(fourColItemRef => console.log(fourColItemRef));
 
+        const tlburger = new TimelineMax({ paused: true });
         const tlmenu = new TimelineMax({ paused: true });
 
         //default animations
+
+        tlburger.to(burgerLine1stRef.current, 0.2, { x: -10 }, 0)
+            .to(burgerLine3rdRef.current, 0.2, { x: 10 }, 0);
 
         //because element sets visiable: hidden so we need to use autoAlpha, opacity does not work in this case
         tlmenu.to(navRef.current, 0.3, { autoAlpha: 1 })
             .staggerFromTo(navRef.current.children[0].children, 0.5, { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, 0.2);
 
         //anomations for events
+
+        //nav
         burgerIconRef.current.onmouseenter = () => {
-            TweenMax.to(
-                burgerLine1stRef.current,
-                0.2,
-                { x: -10 }
-            );
-            TweenMax.to(
-                burgerLine3rdRef.current,
-                0.2,
-                { x: 10 }
-            );
+            tlburger.play(0);
         }
 
         burgerIconRef.current.onmouseleave = () => {
-            TweenMax.to(
-                burgerLine1stRef.current,
-                0.2,
-                { x: 0 }
-            );
-            TweenMax.to(
-                burgerLine3rdRef.current,
-                0.2,
-                { x: 0 }
-            );
+            tlburger.reverse(0);
         }
 
         burgerIconRef.current.onclick = () => {
@@ -62,9 +53,40 @@ const MainPage = () => {
         closeNavRef.current.onclick = () => {
             tlmenu.reverse(0);
         }
+        //end nav
 
+        //slogan
+        TweenMax.fromTo(
+            sloganRef.current,
+            0.5,
+            { y: 80, opacity: 0 },
+            { y: 0, opacity: 1, delay: 0.5 }
+        );
+        TweenMax.fromTo(
+            learnMoreButtonRef.current,
+            0.5,
+            { y: 80, opacity: 0 },
+            { y: 0, opacity: 1, delay: 1 }
+        );
+        //end slogan
 
+        //four columns 
+        fourColItemRefs.current.forEach(fourColItemRef => fourColItemRef.onmouseenter = () => {
+            TweenMax.to(
+                fourColItemRef,
+                0.5,
+                { y: -10, scale: 1.03, boxShadow: '0 0 20px rgba(0,0,0,0.36)' }
+            );
+        })
 
+        fourColItemRefs.current.forEach(fourColItemRef => fourColItemRef.onmouseleave = () => {
+            TweenMax.to(
+                fourColItemRef,
+                0.5,
+                { y: 0, scale: 1, boxShadow: '0 0 20px rgba(0,0,0,0.06)' }
+            );
+        })
+        //end four columns
 
         //eslint-disable-next-line
     }, []);
@@ -92,8 +114,8 @@ const MainPage = () => {
                 <div className="logo">
                     <AlphastarLogo />
                 </div>
-                <h1>We are AlphaStar</h1>
-                <a href="#0" className="learnMoreButton">Learn more</a>
+                <h1 ref={sloganRef}>We are AlphaStar</h1>
+                <a href="#0" className="learnMoreButton" ref={learnMoreButtonRef}>Learn more</a>
                 <div className="ovalDivider">
                     <CircleDivider />
                 </div>
@@ -105,14 +127,15 @@ const MainPage = () => {
                     <div className="blueDividerLine"></div>
                 </hgroup>
                 <div className="fourColContainer container">
-                    <div className="fourColItem"> <img src={factory} alt="" />
+                    <div className="fourColItem" ref={el => fourColItemRefs.current[0] = el}>
+                        <img src={factory} alt="" />
                         <div className="fourColText">
                             <h3>The Factory</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad. </p>
                             <a href="#0" className="fourColButton">Learn more</a>
                         </div>
                     </div>
-                    <div className="fourColItem">
+                    <div className="fourColItem" ref={el => fourColItemRefs.current[1] = el}>
                         <img src={equipment} alt="" />
                         <div className="fourColText">
                             <h3>The Equipment</h3>
@@ -120,7 +143,7 @@ const MainPage = () => {
                             <a href="#0" className="fourColButton">Learn more</a>
                         </div>
                     </div>
-                    <div className="fourColItem">
+                    <div className="fourColItem" ref={el => fourColItemRefs.current[2] = el}>
                         <img src={team} alt="" />
                         <div className="fourColText">
                             <h3>The Team</h3>
@@ -128,7 +151,7 @@ const MainPage = () => {
                             <a href="#0" className="fourColButton">Learn more</a>
                         </div>
                     </div>
-                    <div className="fourColItem">
+                    <div className="fourColItem" ref={el => fourColItemRefs.current[3] = el}>
                         <img src={training} alt="" />
                         <div className="fourColText">
                             <h3>The Training</h3>
