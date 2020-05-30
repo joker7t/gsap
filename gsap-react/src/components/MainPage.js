@@ -7,19 +7,26 @@ import factory from "../images/factory.jpg";
 import equipment from "../images/equipment.jpg";
 import team from "../images/team.jpg";
 import training from "../images/training.jpg";
-import { TweenMax } from "gsap";
+import { TweenMax, TimelineMax } from "gsap";
 
 const MainPage = () => {
     const burgerIconRef = useRef(null);
     const burgerLine1stRef = useRef(null);
     const burgerLine2ndRef = useRef(null);
     const burgerLine3rdRef = useRef(null);
+    const navRef = useRef(null);
+    const closeNavRef = useRef(null);
 
     useEffect(() => {
-        console.log(burgerIconRef);
+        console.log(navRef.current.children[0].children);
+
+        const tlmenu = new TimelineMax({ paused: true });
 
         //default animations
 
+        //because element sets visiable: hidden so we need to use autoAlpha, opacity does not work in this case
+        tlmenu.to(navRef.current, 0.3, { autoAlpha: 1 })
+            .staggerFromTo(navRef.current.children[0].children, 0.5, { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, 0.2);
 
         //anomations for events
         burgerIconRef.current.onmouseenter = () => {
@@ -48,6 +55,14 @@ const MainPage = () => {
             );
         }
 
+        burgerIconRef.current.onclick = () => {
+            tlmenu.play(0);
+        }
+
+        closeNavRef.current.onclick = () => {
+            tlmenu.reverse(0);
+        }
+
 
 
 
@@ -57,7 +72,7 @@ const MainPage = () => {
     return (
         <div>
             <header>
-                <nav>
+                <nav ref={navRef}>
                     <ul className="navMenu">
                         <li><a href="#0">Home</a></li>
                         <li><a href="#0">About us</a></li>
@@ -65,7 +80,7 @@ const MainPage = () => {
                         <li><a href="#0">The blog</a></li>
                         <li><a href="#0">Contact us</a></li>
                     </ul>
-                    <p className="closeButton">X</p>
+                    <p className="closeButton" ref={closeNavRef}>X</p>
                 </nav>
                 <div className="burgerIcon" ref={burgerIconRef}>
                     <div className="burgerLine" ref={burgerLine1stRef}></div>
