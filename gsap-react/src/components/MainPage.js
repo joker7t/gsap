@@ -7,7 +7,7 @@ import factory from "../images/factory.jpg";
 import equipment from "../images/equipment.jpg";
 import team from "../images/team.jpg";
 import training from "../images/training.jpg";
-import { TweenMax, TimelineMax, Power2 } from "gsap";
+import { TweenMax, TimelineMax, Power2, Linear } from "gsap";
 
 const MainPage = () => {
     const burgerIconRef = useRef(null);
@@ -20,6 +20,8 @@ const MainPage = () => {
     const learnMoreButtonRef = useRef(null);
     const fourColItemRefs = useRef([]);
     const serviceBoxRefs = useRef([]);
+    const cogLeftRef = useRef(null);
+    const cogRightRef = useRef(null);
 
     useEffect(() => {
         const tlburger = new TimelineMax({ paused: true });
@@ -111,6 +113,19 @@ const MainPage = () => {
             );
         })
         //end services
+
+        //rotating cogs
+        TweenMax.to(
+            cogLeftRef.current,
+            8,
+            { rotation: 360, repeat: -1, ease: Linear.easeNone }
+        );
+        TweenMax.to(
+            cogRightRef.current,
+            8,
+            { rotation: -360, repeat: -1, ease: Linear.easeNone }
+        );
+        //end rotating cogs
 
         //eslint-disable-next-line
     }, []);
@@ -219,10 +234,10 @@ const MainPage = () => {
                         <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. </p>
                     </div>
                     <div className="cogImageCol">
-                        <div className="cogLeft">
+                        <div className="cogLeft" ref={cogLeftRef}>
                             <CogLeft />
                         </div>
-                        <div className="cogRight">
+                        <div className="cogRight" ref={cogRightRef}>
                             <CogRight />
                         </div>
                     </div>
