@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ReactComponent as AlphastarLogo } from "../images/alphastarlogo.svg";
 import { ReactComponent as CircleDivider } from "../images/circle-divider.svg";
 import { ReactComponent as CogLeft } from "../images/cog-left.svg";
@@ -8,6 +8,7 @@ import equipment from "../images/equipment.jpg";
 import team from "../images/team.jpg";
 import training from "../images/training.jpg";
 import { TweenMax, TimelineMax, Power2, Linear } from "gsap";
+import MainLoader from './MainLoader';
 
 const MainPage = () => {
     const burgerIconRef = useRef(null);
@@ -23,6 +24,16 @@ const MainPage = () => {
     const cogLeftRef = useRef(null);
     const cogRightRef = useRef(null);
 
+    const [isLoading, setIsLoading] = useState(true);
+
+    const loading = () => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 1000);
+    }
+
+    loading();
+
     useEffect(() => {
         const tlburger = new TimelineMax({ paused: true });
         const tlmenu = new TimelineMax({ paused: true });
@@ -34,26 +45,29 @@ const MainPage = () => {
 
         //because element sets visiable: hidden so we need to use autoAlpha, opacity does not work in this case
         tlmenu.to(navRef.current, 0.3, { autoAlpha: 1 })
-            .staggerFromTo(navRef.current.children[0].children, 0.5, { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, 0.2);
+            .staggerFromTo(navRef.current && navRef.current.children[0].children, 0.5, { y: 100, opacity: 0 }, { y: 0, opacity: 1 }, 0.2);
 
         //anomations for events
 
         //nav
-        burgerIconRef.current.onmouseenter = () => {
-            tlburger.play(0);
+        if (burgerIconRef.current && closeNavRef.current) {
+            burgerIconRef.current.onmouseenter = () => {
+                tlburger.play(0);
+            }
+
+            burgerIconRef.current.onmouseleave = () => {
+                tlburger.reverse(0);
+            }
+
+            burgerIconRef.current.onclick = () => {
+                tlmenu.play(0);
+            }
+
+            closeNavRef.current.onclick = () => {
+                tlmenu.reverse(0);
+            }
         }
 
-        burgerIconRef.current.onmouseleave = () => {
-            tlburger.reverse(0);
-        }
-
-        burgerIconRef.current.onclick = () => {
-            tlmenu.play(0);
-        }
-
-        closeNavRef.current.onclick = () => {
-            tlmenu.reverse(0);
-        }
         //end nav
 
         //slogan
@@ -128,10 +142,10 @@ const MainPage = () => {
         //end rotating cogs
 
         //eslint-disable-next-line
-    }, []);
+    });
 
     return (
-        <div>
+        isLoading ? <MainLoader /> : <div>
             <header>
                 <nav ref={navRef}>
                     <ul className="navMenu">
