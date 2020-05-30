@@ -7,7 +7,7 @@ import factory from "../images/factory.jpg";
 import equipment from "../images/equipment.jpg";
 import team from "../images/team.jpg";
 import training from "../images/training.jpg";
-import { TweenMax, TimelineMax } from "gsap";
+import { TweenMax, TimelineMax, Power2 } from "gsap";
 
 const MainPage = () => {
     const burgerIconRef = useRef(null);
@@ -19,10 +19,9 @@ const MainPage = () => {
     const sloganRef = useRef(null);
     const learnMoreButtonRef = useRef(null);
     const fourColItemRefs = useRef([]);
+    const serviceBoxRefs = useRef([]);
 
     useEffect(() => {
-        fourColItemRefs.current.forEach(fourColItemRef => console.log(fourColItemRef));
-
         const tlburger = new TimelineMax({ paused: true });
         const tlmenu = new TimelineMax({ paused: true });
 
@@ -87,6 +86,31 @@ const MainPage = () => {
             );
         })
         //end four columns
+
+        //services
+        serviceBoxRefs.current.forEach(serviceBoxRef => {
+            TweenMax.set(
+                serviceBoxRef.children[0],
+                { y: 200, opacity: 0 }
+            );
+        })
+
+        serviceBoxRefs.current.forEach(serviceBoxRef => serviceBoxRef.onmouseenter = () => {
+            TweenMax.to(
+                serviceBoxRef.children[0],
+                0.5,
+                { y: 0, opacity: 1, ease: Power2.easeOut }
+            );
+        })
+
+        serviceBoxRefs.current.forEach(serviceBoxRef => serviceBoxRef.onmouseleave = () => {
+            TweenMax.to(
+                serviceBoxRef.children[0],
+                0.5,
+                { y: 200, opacity: 0 }
+            );
+        })
+        //end services
 
         //eslint-disable-next-line
     }, []);
@@ -162,19 +186,19 @@ const MainPage = () => {
                 </div>
             </section>
             <section className="services">
-                <div className="serviceBox">
+                <div className="serviceBox" ref={el => serviceBoxRefs.current[0] = el}>
                     <div className="serviceBoxInner">
                         <h2>We are Dedicated</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse impedit, nobis neque vitae rerum cumque.</p>
                     </div>
                 </div>
-                <div className="serviceBox">
+                <div className="serviceBox" ref={el => serviceBoxRefs.current[1] = el}>
                     <div className="serviceBoxInner">
                         <h2>We are Responsive</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse impedit, nobis neque vitae rerum cumque.</p>
                     </div>
                 </div>
-                <div className="serviceBox">
+                <div className="serviceBox" ref={el => serviceBoxRefs.current[2] = el}>
                     <div className="serviceBoxInner">
                         <h2>We are Dynamic</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse impedit, nobis neque vitae rerum cumque.</p>
