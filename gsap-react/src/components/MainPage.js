@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ReactComponent as AlphastarLogo } from "../images/alphastarlogo.svg";
 import { ReactComponent as CircleDivider } from "../images/circle-divider.svg";
 import { ReactComponent as CogLeft } from "../images/cog-left.svg";
@@ -9,8 +9,17 @@ import team from "../images/team.jpg";
 import training from "../images/training.jpg";
 
 const MainPage = () => {
+    const burgerIconRef = useRef(null);
 
     useEffect(() => {
+        console.log(burgerIconRef)
+        burgerIconRef.current.onmouseenter = () => {
+            console.log(123);
+        }
+        burgerIconRef.current.onmouseout = () => {
+            console.log(456);
+        }
+
 
         //eslint-disable-next-line
     }, []);
@@ -28,14 +37,14 @@ const MainPage = () => {
                     </ul>
                     <p className="closeButton">X</p>
                 </nav>
-                <div className="burgerIcon">
+                <div className="burgerIcon" ref={burgerIconRef}>
                     <div className="burgerLine"></div>
                     <div className="burgerLine"></div>
                     <div className="burgerLine"></div>
                 </div>
             </header>
             <section id="hero">
-                <div className="">
+                <div className="logo">
                     <AlphastarLogo />
                 </div>
                 <h1>We are AlphaStar</h1>
