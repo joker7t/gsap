@@ -7,18 +7,48 @@ import factory from "../images/factory.jpg";
 import equipment from "../images/equipment.jpg";
 import team from "../images/team.jpg";
 import training from "../images/training.jpg";
+import { TweenMax } from "gsap";
 
 const MainPage = () => {
     const burgerIconRef = useRef(null);
+    const burgerLine1stRef = useRef(null);
+    const burgerLine2ndRef = useRef(null);
+    const burgerLine3rdRef = useRef(null);
 
     useEffect(() => {
-        console.log(burgerIconRef)
+        console.log(burgerIconRef);
+
+        //default animations
+
+
+        //anomations for events
         burgerIconRef.current.onmouseenter = () => {
-            console.log(123);
+            TweenMax.to(
+                burgerLine1stRef.current,
+                0.2,
+                { x: -10 }
+            );
+            TweenMax.to(
+                burgerLine3rdRef.current,
+                0.2,
+                { x: 10 }
+            );
         }
-        burgerIconRef.current.onmouseout = () => {
-            console.log(456);
+
+        burgerIconRef.current.onmouseleave = () => {
+            TweenMax.to(
+                burgerLine1stRef.current,
+                0.2,
+                { x: 0 }
+            );
+            TweenMax.to(
+                burgerLine3rdRef.current,
+                0.2,
+                { x: 0 }
+            );
         }
+
+
 
 
         //eslint-disable-next-line
@@ -38,9 +68,9 @@ const MainPage = () => {
                     <p className="closeButton">X</p>
                 </nav>
                 <div className="burgerIcon" ref={burgerIconRef}>
-                    <div className="burgerLine"></div>
-                    <div className="burgerLine"></div>
-                    <div className="burgerLine"></div>
+                    <div className="burgerLine" ref={burgerLine1stRef}></div>
+                    <div className="burgerLine" ref={burgerLine2ndRef}></div>
+                    <div className="burgerLine" ref={burgerLine3rdRef}></div>
                 </div>
             </header>
             <section id="hero">
