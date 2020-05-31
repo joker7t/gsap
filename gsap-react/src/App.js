@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NatoursPage from './components-natours/NatoursPage';
 import Landing from './Landing';
 
-
 const App = () => {
   return (
     <Router>
