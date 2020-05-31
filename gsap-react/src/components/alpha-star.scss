@@ -122,7 +122,7 @@ transform: translateX(1rem);
   justify-content: center;
   align-items: center;
   position: relative;
-  background-image: url(../images/bg-pattern.png);
+  background-image: url(./images/bg-pattern.png);
   background-repeat: repeat;
   background: rgb(79,162,249); /* Old browsers */
   background: -moz-radial-gradient(center, ellipse cover, rgba(79,162,249,1) 0%, rgba(32,124,229,1) 100%); /* FF3.6-15 */
@@ -252,7 +252,7 @@ margin-top: 0;
 
 .cogSection {
 background-size: cover;
-background-image: url('../images/cog-bg.jpg');  
+background-image: url('./images/cog-bg.jpg');  
 padding-top: 40px;
 padding-bottom: 60px;
 border-top:1px solid #ddd;
@@ -324,15 +324,15 @@ overflow:hidden;
 }
 
 .serviceBox:first-child {
-background-image: url(../images/engine.jpg);    
+background-image: url(./images/engine.jpg);    
 }
 
 .serviceBox:nth-child(2) {
-background-image: url(../images/city.jpg);    
+background-image: url(./images/city.jpg);    
 }
 
 .serviceBox:nth-child(3) {
-background-image: url(../images/truck.jpg);    
+background-image: url(./images/truck.jpg);    
 }
 
 .serviceBoxInner {

@@ -1,13 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './alpha-star.scss';
-import { ReactComponent as AlphastarLogo } from "../images/alphastarlogo.svg";
-import { ReactComponent as CircleDivider } from "../images/circle-divider.svg";
-import { ReactComponent as CogLeft } from "../images/cog-left.svg";
-import { ReactComponent as CogRight } from "../images/cog-right.svg";
-import factory from "../images/factory.jpg";
-import equipment from "../images/equipment.jpg";
-import team from "../images/team.jpg";
-import training from "../images/training.jpg";
+import { ReactComponent as AlphastarLogo } from "./images/alphastarlogo.svg";
+import { ReactComponent as CircleDivider } from "./images/circle-divider.svg";
+import { ReactComponent as CogLeft } from "./images/cog-left.svg";
+import { ReactComponent as CogRight } from "./images/cog-right.svg";
+import factory from "./images/factory.jpg";
+import equipment from "./images/equipment.jpg";
+import team from "./images/team.jpg";
+import training from "./images/training.jpg";
 import { TweenMax, TimelineMax, Power2, Linear } from "gsap";
 import MainLoader from './MainLoader';
 
