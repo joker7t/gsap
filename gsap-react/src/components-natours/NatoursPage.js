@@ -16,7 +16,7 @@ const NatoursPage = () => {
             <div className="navigation">
                 <input type="checkbox" className="navigation__checkbox" id="navi-toggle" />
 
-                <label for="navi-toggle" className="navigation__button">
+                <label htmlFor="navi-toggle" className="navigation__button">
                     <span className="navigation__icon">&nbsp;</span>
                 </label>
 
@@ -35,7 +35,7 @@ const NatoursPage = () => {
 
             <header className="header">
                 <div className="header__logo-box">
-                    <img src={logowhite} alt="Logo" class="header__logo" />
+                    <img src={logowhite} alt="Logo" className="header__logo" />
                 </div>
 
                 <div className="header__text-box">
@@ -74,19 +74,19 @@ const NatoursPage = () => {
                         <div className="col-1-of-2">
                             <div className="composition">
 
-                                <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                                <img srcSet="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
                                     sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                                     alt="Photo 1"
                                     className="composition__photo composition__photo--p1"
                                     src={nat1large} />
 
-                                <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                                <img srcSet="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
                                     sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                                     alt="Photo 2"
                                     className="composition__photo composition__photo--p2"
                                     src={nat2large} />
 
-                                <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                                <img srcSet="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
                                     sizes="(max-width: 56.25em) 20vw, (max-width: 37.5em) 30vw, 300px"
                                     alt="Photo 3"
                                     className="composition__photo composition__photo--p3"
@@ -258,7 +258,7 @@ const NatoursPage = () => {
 
                 <section className="section-stories">
                     <div className="bg-video">
-                        <video className="bg-video__content" autoplay muted loop>
+                        <video className="bg-video__content" autoPlay muted loop>
                             <source src={video1} type="video/mp4" />
                             <source src={video2} type="video/webm" />
                         Your browser is not supported!
@@ -291,7 +291,7 @@ const NatoursPage = () => {
                     <div className="row">
                         <div className="story">
                             <figure className="story__shape">
-                                <img src={nat9} alt="Person on a tour" class="story__img" />
+                                <img src={nat9} alt="Person on a tour" className="story__img" />
                                 <figcaption className="story__caption">Jack Wilson</figcaption>
                             </figure>
                             <div className="story__text">
@@ -323,18 +323,18 @@ const NatoursPage = () => {
 
                                     <div className="form__group">
                                         <input type="text" className="form__input" placeholder="Full name" id="name" required />
-                                        <label for="name" className="form__label">Full name</label>
+                                        <label htmlFor="name" className="form__label">Full name</label>
                                     </div>
 
                                     <div className="form__group">
                                         <input type="email" className="form__input" placeholder="Email address" id="email" required />
-                                        <label for="email" className="form__label">Email address</label>
+                                        <label htmlFor="email" className="form__label">Email address</label>
                                     </div>
 
                                     <div className="form__group u-margin-bottom-medium">
                                         <div className="form__radio-group">
                                             <input type="radio" className="form__radio-input" id="small" name="size" />
-                                            <label for="small" className="form__radio-label">
+                                            <label htmlFor="small" className="form__radio-label">
                                                 <span className="form__radio-button"></span>
                                             Small tour group
                                         </label>
@@ -342,7 +342,7 @@ const NatoursPage = () => {
 
                                         <div className="form__radio-group">
                                             <input type="radio" className="form__radio-input" id="large" name="size" />
-                                            <label for="large" className="form__radio-label">
+                                            <label htmlFor="large" className="form__radio-label">
                                                 <span className="form__radio-button"></span>
                                             Large tour group
                                         </label>
@@ -386,11 +386,8 @@ const NatoursPage = () => {
                     </div>
                     <div className="col-1-of-2">
                         <p className="footer__copyright">
-                            Built by <a href="#" class="footer__link">Jonas Schmedtmann</a> for his online course <a href="#" class="footer__link">Advanced CSS and Sass</a>.
-                        Copyright &copy; by Jonas Schmedtmann. You are 100% allowed to use this webpage for both personal
-                        and commercial use, but NOT to claim it as your own design. A credit to the original author, Jonas
-                        Schmedtmann, is of course highly appreciated!
-                    </p>
+                            Copyright &copy;
+                        </p>
                     </div>
                 </div>
             </footer>
