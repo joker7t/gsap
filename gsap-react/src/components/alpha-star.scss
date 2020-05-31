@@ -52,6 +52,8 @@ justify-content: center;
 align-items: center;
 text-align: center;
 background-color: #0074c4; 
+top: 0;
+left: 0;
 }
 
 .closeButton {
@@ -95,7 +97,7 @@ display: inline-block;
 padding: 15px 50px;
 text-transform: uppercase;
 border-bottom:1px solid #142d5f;
-transition: 0.3s ease all;
+transition: 0.5s ease all;
 background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #ff6500 50%);
 background-size: 320%;
 }
@@ -120,7 +122,7 @@ transform: translateX(1rem);
   justify-content: center;
   align-items: center;
   position: relative;
-  background-image: url(./images/bg-pattern.png);
+  background-image: url(../images/bg-pattern.png);
   background-repeat: repeat;
   background: rgb(79,162,249); /* Old browsers */
   background: -moz-radial-gradient(center, ellipse cover, rgba(79,162,249,1) 0%, rgba(32,124,229,1) 100%); /* FF3.6-15 */
@@ -249,10 +251,12 @@ margin-top: 0;
 /*COG SECTION*/
 
 .cogSection {
-background-image: url('./images/cog-bg.jpg');  
+background-size: cover;
+background-image: url('../images/cog-bg.jpg');  
 padding-top: 40px;
 padding-bottom: 60px;
 border-top:1px solid #ddd;
+height: 600px;
 }
 
 .cogSection hgroup {
@@ -281,7 +285,7 @@ flex:1;
 .cogImageCol {
 flex:1;    
 position: relative;
-padding-top: 40px;
+padding-top: 20px;
 }
 
 .introText {
@@ -293,14 +297,14 @@ font-size: 27px;
 width: 220px;    
 position: absolute;
 left: 80px;
-top: 60px;
+top: 0;
 }
 
 .cogRight {
 width: 220px;   
 position: absolute;
   left: 264px;
-  top: 158px;
+  top: 98px;
 }
 
 /*SERVICES */
@@ -320,15 +324,15 @@ overflow:hidden;
 }
 
 .serviceBox:first-child {
-background-image: url(./images/engine.jpg);    
+background-image: url(../images/engine.jpg);    
 }
 
 .serviceBox:nth-child(2) {
-background-image: url(./images/city.jpg);    
+background-image: url(../images/city.jpg);    
 }
 
 .serviceBox:nth-child(3) {
-background-image: url(./images/truck.jpg);    
+background-image: url(../images/truck.jpg);    
 }
 
 .serviceBoxInner {

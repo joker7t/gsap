@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import '../alpha-star.scss';
+import './alpha-star.scss';
 import { ReactComponent as AlphastarLogo } from "../images/alphastarlogo.svg";
 import { ReactComponent as CircleDivider } from "../images/circle-divider.svg";
 import { ReactComponent as CogLeft } from "../images/cog-left.svg";
